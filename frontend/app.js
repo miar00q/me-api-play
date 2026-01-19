@@ -1,7 +1,7 @@
 // API base URL - change this when deploying
 const API_BASE_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:8000'
-    : 'https://your-render-backend-url.onrender.com';
+    : 'https://me-api-play.onrender.com';
 
 // DOM elements
 const skillSearchInput = document.getElementById('skill-search');
