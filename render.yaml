@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: me-api-backend
+    runtime: python3
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./me_api.db
+      - key: API_KEY
+        value: your-production-api-key-here
+    plan: starter
+
+  - type: web
+    name: me-api-frontend
+    runtime: static
+    buildCommand: "echo 'Static site built successfully'"
+    staticPublishPath: ./frontend
+    plan: starter
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
