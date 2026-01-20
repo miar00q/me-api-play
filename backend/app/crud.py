@@ -75,7 +75,7 @@ def update_profile(db: Session, profile_update: schemas.ProfileUpdate) -> Option
     if projects is not None:
         profile.projects.clear()
         for project_data in projects:
-            project = models.Project(**project_data.dict())
+            project = models.Project(**project_data)
             db.add(project)
             profile.projects.append(project)
 
@@ -83,7 +83,7 @@ def update_profile(db: Session, profile_update: schemas.ProfileUpdate) -> Option
     if work_experience is not None:
         profile.work_experience.clear()
         for work_data in work_experience:
-            work = models.Work(**work_data.dict())
+            work = models.Work(**work_data)
             db.add(work)
             profile.work_experience.append(work)
 
